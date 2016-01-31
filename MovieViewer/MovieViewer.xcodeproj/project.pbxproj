@@ -15,6 +15,7 @@
 		E452E2FE1C55F05E00E8047B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452E2FD1C55F05E00E8047B /* MovieCell.swift */; };
 		E49EFC2E54839ACC85125609 /* Pods_MovieViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5CC83F2442D117C61C7735 /* Pods_MovieViewer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E4F612381C5D765F00AA87B5 /* 000000_Cloud_128px.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F612371C5D765F00AA87B5 /* 000000_Cloud_128px.png */; };
+		E4F6123B1C5D7D8800AA87B5 /* theather.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4F6123A1C5D7D8800AA87B5 /* theather.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E452E2FA1C55E7D400E8047B /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		E452E2FD1C55F05E00E8047B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		E4F612371C5D765F00AA87B5 /* 000000_Cloud_128px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000000_Cloud_128px.png; sourceTree = "<group>"; };
+		E4F6123A1C5D7D8800AA87B5 /* theather.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theather.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E4F612371C5D765F00AA87B5 /* 000000_Cloud_128px.png */,
+				E4F6123A1C5D7D8800AA87B5 /* theather.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			files = (
 				E452E2F31C55E78300E8047B /* LaunchScreen.storyboard in Resources */,
 				E4F612381C5D765F00AA87B5 /* 000000_Cloud_128px.png in Resources */,
+				E4F6123B1C5D7D8800AA87B5 /* theather.jpg in Resources */,
 				E452E2F01C55E78300E8047B /* Assets.xcassets in Resources */,
 				E452E2EE1C55E78300E8047B /* Main.storyboard in Resources */,
 			);

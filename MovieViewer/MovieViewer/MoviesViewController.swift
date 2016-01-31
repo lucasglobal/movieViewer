@@ -27,27 +27,43 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         tableView.insertSubview(refreshControl, atIndex: 0)
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.backgroundColor = UIColor.clearColor()
+
         self.refreshWithoutControl()
         
         
     }
-
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let returnedView = UIView(frame: CGRectMake(0, 0, 20, 20)) //set these values as necessary
+        returnedView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+        
+        let label = UILabel(frame: CGRectMake(0, 0, 30, 30))
+        label.text = "test"
+        label.textColor = UIColor.yellowColor()
+        returnedView.addSubview(label)
+        
+        return returnedView
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let movies = movies{
-            return movies.count
+            return movies.count - 1
         }
         else{
             return 0
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell",forIndexPath:  indexPath) as! MovieCell
-        let movie = movies![indexPath.row]
+        cell.backgroundColor = .clearColor()
+        let movie = movies![indexPath.section]
         let tittle = movie["title"] as! String
         let overView = movie["overview"] as! String
         let posterPath = movie["poster_path"] as! String
@@ -59,9 +75,13 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         cell.titleLabel.text = tittle
         cell.overViewLabel.text = overView
         
-   
         return cell
         
+    }
+  
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Section \(section)"
     }
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
@@ -165,4 +185,5 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
 }
