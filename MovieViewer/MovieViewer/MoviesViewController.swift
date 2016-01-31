@@ -63,7 +63,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
             })
 
         }
-        else if (descriptionBeingShown == false){
+        else if (descriptionBeingShown == true){
             
             let cell = sender.view as? MovieCell
             self.descriptionBeingShown = false
