@@ -17,6 +17,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     @IBOutlet weak var barNetworkIssue: UIView!
     var movies: [NSDictionary]?
     var networkBarAppearing: Bool = false
+    var descriptionBeingShown: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,23 +30,36 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = UIColor.clearColor()
-        tableView.frame = CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, tableView.frame.size.height)
 
         self.refreshWithoutControl()
         
         
+        
     }
+    func singleTapping(sender: UITapGestureRecognizer){
+        
+        if(!descriptionBeingShown){
+            let cell = sender.view as? MovieCell
+            self.descriptionBeingShown = true
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width - 200, cell!.posterView.frame.size.height - 200)
+                
+                cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y - 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
+            })
+        }
+    }
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView()
         returnedView.frame = CGRectMake(0, 0, 100, 60)
         returnedView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         
-        let label = UILabel(frame: CGRectMake(0, 0, 500, 30))
+        let label = UILabel(frame: CGRectMake(10, 0, 500, 30))
         label.textColor = UIColor.yellowColor()
         let movie = movies![section]
         let tittle = movie["title"] as! String
         label.text = tittle
-        label.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
+        label.font = UIFont(name: "HelveticaNeue-UltraLight", size: 26)
         returnedView.addSubview(label)
         
         return returnedView
@@ -77,6 +91,11 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         
         cell.posterView.setImageWithURL(imageURL!)
         cell.overViewLabel.text = overView
+        
+        cell.tag = indexPath.section
+        let singleTap = UITapGestureRecognizer(target: self, action: "singleTapping:")
+        cell.posterView.addGestureRecognizer(singleTap)
+        cell.addGestureRecognizer(singleTap)
         
         return cell
         
@@ -190,3 +209,5 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     }
     
 }
+
+
