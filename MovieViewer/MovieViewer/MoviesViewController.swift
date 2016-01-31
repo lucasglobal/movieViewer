@@ -45,8 +45,26 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                 cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width - 200, cell!.posterView.frame.size.height - 200)
                 
                 cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y - 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
-                  cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y - 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y - 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                cell?.releaseDateLabelStatic.hidden = false
+                cell?.releaseDateLabelDynamic.hidden = false
+                cell?.voteLabelStatic.hidden = false
+                cell?.votesLabelDynamic.hidden = false
+                cell?.ratingLabelStatic.hidden = false
+                cell?.ratingsLabelDynamic.hidden = false
+
             })
+            UIView.animateWithDuration(2, animations: { () -> Void in
+
+                cell?.releaseDateLabelStatic.alpha = 1
+                cell?.releaseDateLabelDynamic.alpha = 1
+                cell?.voteLabelStatic.alpha = 1
+                cell?.votesLabelDynamic.alpha = 1
+                cell?.ratingLabelStatic.alpha = 1
+                cell?.ratingsLabelDynamic.alpha = 1
+                
+            })
+
         }
     }
     
@@ -92,11 +110,18 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         
         cell.posterView.setImageWithURL(imageURL!)
         cell.overViewLabel.text = overView
-        
         cell.tag = indexPath.section
         let singleTap = UITapGestureRecognizer(target: self, action: "singleTapping:")
         cell.posterView.addGestureRecognizer(singleTap)
         cell.addGestureRecognizer(singleTap)
+        
+        let voteAverage = movie["vote_average"] as! Int
+        let voteCount = movie["vote_count"] as! Int
+
+        cell.releaseDateLabelDynamic.text = movie["release_date"] as? String
+        cell.votesLabelDynamic.text = String(voteAverage)
+        cell.ratingsLabelDynamic.text = String(voteCount)
+        
         
         return cell
         
@@ -128,7 +153,8 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             self.tableView.reloadData()
-                            
+                            print(responseDictionary["results"])
+
                             refreshControl.endRefreshing()
                             if self.networkBarAppearing{
                                 self.animateBarNetworkIssueNormalPosition()
