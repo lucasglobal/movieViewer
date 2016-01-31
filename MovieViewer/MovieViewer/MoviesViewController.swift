@@ -21,6 +21,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
 
@@ -28,18 +29,23 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = UIColor.clearColor()
+        tableView.frame = CGRectMake(tableView.frame.origin.x, tableView.frame.origin.y, tableView.frame.size.width, tableView.frame.size.height)
 
         self.refreshWithoutControl()
         
         
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let returnedView = UIView(frame: CGRectMake(0, 0, 20, 20)) //set these values as necessary
+        let returnedView = UIView()
+        returnedView.frame = CGRectMake(0, 0, 100, 60)
         returnedView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         
-        let label = UILabel(frame: CGRectMake(0, 0, 30, 30))
-        label.text = "test"
+        let label = UILabel(frame: CGRectMake(0, 0, 500, 30))
         label.textColor = UIColor.yellowColor()
+        let movie = movies![section]
+        let tittle = movie["title"] as! String
+        label.text = tittle
+        label.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
         returnedView.addSubview(label)
         
         return returnedView
@@ -64,15 +70,12 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell",forIndexPath:  indexPath) as! MovieCell
         cell.backgroundColor = .clearColor()
         let movie = movies![indexPath.section]
-        let tittle = movie["title"] as! String
         let overView = movie["overview"] as! String
         let posterPath = movie["poster_path"] as! String
-        
         let baseURL = "http://image.tmdb.org/t/p/w500"
         let imageURL = NSURL(string: baseURL + posterPath)
         
         cell.posterView.setImageWithURL(imageURL!)
-        cell.titleLabel.text = tittle
         cell.overViewLabel.text = overView
         
         return cell
