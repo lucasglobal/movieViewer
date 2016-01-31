@@ -18,6 +18,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     var movies: [NSDictionary]?
     var networkBarAppearing: Bool = false
     var descriptionBeingShown: Bool = false
+    var cellBeingUsed: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,20 +39,16 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     }
     func singleTapping(sender: UITapGestureRecognizer){
         
-        if(!descriptionBeingShown){
+        if(descriptionBeingShown == false){
+            print("sendo mostrada agora")
             let cell = sender.view as? MovieCell
             self.descriptionBeingShown = true
+
             UIView.animateWithDuration(1, animations: { () -> Void in
                 cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width - 200, cell!.posterView.frame.size.height - 200)
                 
                 cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y - 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
                 cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y - 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
-                cell?.releaseDateLabelStatic.hidden = false
-                cell?.releaseDateLabelDynamic.hidden = false
-                cell?.voteLabelStatic.hidden = false
-                cell?.votesLabelDynamic.hidden = false
-                cell?.ratingLabelStatic.hidden = false
-                cell?.ratingsLabelDynamic.hidden = false
 
             })
             UIView.animateWithDuration(2, animations: { () -> Void in
@@ -62,6 +59,29 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                 cell?.votesLabelDynamic.alpha = 1
                 cell?.ratingLabelStatic.alpha = 1
                 cell?.ratingsLabelDynamic.alpha = 1
+                
+            })
+
+        }
+        else if (descriptionBeingShown == false){
+            
+            let cell = sender.view as? MovieCell
+            self.descriptionBeingShown = false
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width + 200, cell!.posterView.frame.size.height + 200)
+                
+                cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y + 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
+                cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y + 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                
+            })
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                
+                cell?.releaseDateLabelStatic.alpha = 0
+                cell?.releaseDateLabelDynamic.alpha = 0
+                cell?.voteLabelStatic.alpha = 0
+                cell?.votesLabelDynamic.alpha = 0
+                cell?.ratingLabelStatic.alpha = 0
+                cell?.ratingsLabelDynamic.alpha = 0
                 
             })
 
