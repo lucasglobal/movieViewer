@@ -147,7 +147,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         cell.votesLabelDynamic.text = String(voteAverage)
         cell.ratingsLabelDynamic.text = String(voteCount)
         
-        
+        cell.buttonSeeMore.tag = cell.tag
         return cell
         
     }
@@ -268,11 +268,11 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
 
     @IBAction func actionMoreInfoScreen(sender: AnyObject) {
         
-        let indexPathCell = NSIndexPath(forRow: sender.tag, inSection: 0)
+        let indexPathCell = NSIndexPath(forRow: 0, inSection: sender.tag)
+        print(sender.tag)
         let cell = tableView.cellForRowAtIndexPath(indexPathCell) as! MovieCell
         
-        let indexPath = tableView.indexPathForCell(cell)
-        selectedMovie = movies![indexPath!.row]
+        selectedMovie = movies![sender.tag]
         
         
 
