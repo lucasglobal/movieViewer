@@ -12,6 +12,7 @@ class MovieCell: UITableViewCell {
 
     @IBOutlet weak var releaseDateLabelDynamic: UILabel!
     @IBOutlet weak var overViewLabel: UILabel!
+    @IBOutlet weak var buttonSeeMore: UIButton!
     @IBOutlet weak var votesLabelDynamic: UILabel!
     @IBOutlet weak var ratingLabelStatic: UILabel!
     @IBOutlet weak var voteLabelStatic: UILabel!

@@ -19,6 +19,8 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     var networkBarAppearing: Bool = false
     var descriptionBeingShown: Bool = false
     var cellBeingUsed: Bool = false
+    var selectedMovie: NSDictionary!
+    var endPoint: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                 
                 cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y - 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
                 cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y - 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                cell?.buttonSeeMore.frame = CGRectMake(cell!.buttonSeeMore.frame.origin.x,cell!.buttonSeeMore.frame.origin.y - 280, cell!.buttonSeeMore.frame.size.width, cell!.buttonSeeMore.frame.size.height)
 
             })
             UIView.animateWithDuration(2, animations: { () -> Void in
@@ -72,6 +75,8 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                 
                 cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y + 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
                 cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y + 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                cell?.buttonSeeMore.frame = CGRectMake(cell!.buttonSeeMore.frame.origin.x,cell!.buttonSeeMore.frame.origin.y + 280, cell!.buttonSeeMore.frame.size.width, cell!.buttonSeeMore.frame.size.height)
+
                 
             })
             UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -154,7 +159,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endPoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
             URL: url!,
             cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
@@ -194,7 +199,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     func refreshWithoutControl(){
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endPoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
             URL: url!,
             cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
@@ -254,7 +259,25 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let moreInfoVC = segue.destinationViewController as! MoreInfoViewController
+        moreInfoVC.movie = selectedMovie
+    }
+
+    @IBAction func actionMoreInfoScreen(sender: AnyObject) {
+        
+        let indexPathCell = NSIndexPath(forRow: sender.tag, inSection: 0)
+        let cell = tableView.cellForRowAtIndexPath(indexPathCell) as! MovieCell
+        
+        let indexPath = tableView.indexPathForCell(cell)
+        selectedMovie = movies![indexPath!.row]
+        
+        
+
+    }
+
 }
 
 

@@ -16,6 +16,7 @@
 		E49EFC2E54839ACC85125609 /* Pods_MovieViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5CC83F2442D117C61C7735 /* Pods_MovieViewer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E4F612381C5D765F00AA87B5 /* 000000_Cloud_128px.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F612371C5D765F00AA87B5 /* 000000_Cloud_128px.png */; };
 		E4F6123B1C5D7D8800AA87B5 /* theather.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4F6123A1C5D7D8800AA87B5 /* theather.jpg */; };
+		E4F6123F1C5F1CF200AA87B5 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F6123E1C5F1CF200AA87B5 /* MoreInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E452E2FD1C55F05E00E8047B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		E4F612371C5D765F00AA87B5 /* 000000_Cloud_128px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000000_Cloud_128px.png; sourceTree = "<group>"; };
 		E4F6123A1C5D7D8800AA87B5 /* theather.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = theather.jpg; sourceTree = "<group>"; };
+		E4F6123E1C5F1CF200AA87B5 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E452E2FA1C55E7D400E8047B /* MoviesViewController.swift */,
+				E4F6123E1C5F1CF200AA87B5 /* MoreInfoViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E452E2E91C55E78300E8047B /* AppDelegate.swift in Sources */,
+				E4F6123F1C5F1CF200AA87B5 /* MoreInfoViewController.swift in Sources */,
 				E452E2FB1C55E7D400E8047B /* MoviesViewController.swift in Sources */,
 				E452E2FE1C55F05E00E8047B /* MovieCell.swift in Sources */,
 			);
