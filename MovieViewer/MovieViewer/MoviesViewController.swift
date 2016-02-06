@@ -49,9 +49,12 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
             UIView.animateWithDuration(1, animations: { () -> Void in
                 cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width - 200, cell!.posterView.frame.size.height - 200)
                 
-                cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y - 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
-                cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y - 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
-                cell?.buttonSeeMore.frame = CGRectMake(cell!.buttonSeeMore.frame.origin.x,cell!.buttonSeeMore.frame.origin.y - 280, cell!.buttonSeeMore.frame.size.width, cell!.buttonSeeMore.frame.size.height)
+                cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x, cell!.posterView.frame.origin.y + cell!.posterView.frame.size.height + 10, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                
+                cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x, cell!.labelMovieJustOne.frame.origin.y + cell!.labelMovieJustOne.frame.size.height + 5, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
+                
+              
+                cell?.buttonSeeMore.frame = CGRectMake(cell!.buttonSeeMore.frame.origin.x, cell!.overViewLabel.frame.origin.y + cell!.overViewLabel.frame.size.height + 10, cell!.buttonSeeMore.frame.size.width, cell!.buttonSeeMore.frame.size.height)
 
             })
             UIView.animateWithDuration(2, animations: { () -> Void in
