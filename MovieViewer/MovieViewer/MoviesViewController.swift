@@ -21,6 +21,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     var cellBeingUsed: Bool = false
     var selectedMovie: NSDictionary!
     var endPoint: String!
+    var cellBeingDetailed: Int = 123456789
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +43,11 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     func singleTapping(sender: UITapGestureRecognizer){
         
         if(descriptionBeingShown == false){
-            print("sendo mostrada agora")
             let cell = sender.view as? MovieCell
+            cellBeingDetailed = cell!.tag
+            print("sendo mostrada agora")
             self.descriptionBeingShown = true
-
+            
             UIView.animateWithDuration(1, animations: { () -> Void in
                 cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width - 200, cell!.posterView.frame.size.height - 200)
                 
@@ -70,30 +72,32 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
 
         }
         else if (descriptionBeingShown == true){
-            
             let cell = sender.view as? MovieCell
-            self.descriptionBeingShown = false
-            UIView.animateWithDuration(1, animations: { () -> Void in
-                cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width + 200, cell!.posterView.frame.size.height + 200)
+            if(cellBeingDetailed == cell!.tag){
+                self.descriptionBeingShown = false
+                UIView.animateWithDuration(1, animations: { () -> Void in
+                    cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width + 200, cell!.posterView.frame.size.height + 200)
+                    
+                    cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y + 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
+                    cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y + 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
+                    cell?.buttonSeeMore.frame = CGRectMake(cell!.buttonSeeMore.frame.origin.x,cell!.buttonSeeMore.frame.origin.y + 280, cell!.buttonSeeMore.frame.size.width, cell!.buttonSeeMore.frame.size.height)
+                    
+                    
+                })
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    
+                    cell?.releaseDateLabelStatic.alpha = 0
+                    cell?.releaseDateLabelDynamic.alpha = 0
+                    cell?.voteLabelStatic.alpha = 0
+                    cell?.votesLabelDynamic.alpha = 0
+                    cell?.ratingLabelStatic.alpha = 0
+                    cell?.ratingsLabelDynamic.alpha = 0
+                    
+                })
                 
-                cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y + 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
-                cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y + 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
-                cell?.buttonSeeMore.frame = CGRectMake(cell!.buttonSeeMore.frame.origin.x,cell!.buttonSeeMore.frame.origin.y + 280, cell!.buttonSeeMore.frame.size.width, cell!.buttonSeeMore.frame.size.height)
+            }
 
-                
-            })
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
-                
-                cell?.releaseDateLabelStatic.alpha = 0
-                cell?.releaseDateLabelDynamic.alpha = 0
-                cell?.voteLabelStatic.alpha = 0
-                cell?.votesLabelDynamic.alpha = 0
-                cell?.ratingLabelStatic.alpha = 0
-                cell?.ratingsLabelDynamic.alpha = 0
-                
-            })
-
-        }
+            }
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
