@@ -18,7 +18,13 @@ class MoreInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(movie)
-        self.labelName.text = movie["title"] as! String
+        let posterPath = movie["poster_path"] as! String
+        let baseURL = "http://image.tmdb.org/t/p/w500"
+        let imageURL = NSURL(string: baseURL + posterPath)
+        
+        
+        self.labelName.text = movie["title"] as? String
+        self.imageBanner.setImageWithURL(imageURL!)
         // Do any additional setup after loading the view.
     }
 
