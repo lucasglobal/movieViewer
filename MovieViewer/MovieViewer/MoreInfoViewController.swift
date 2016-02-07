@@ -98,6 +98,12 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewDidAppear(animated: Bool) {
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.scrollView.contentOffset.x += 320
+        })
+
+    }
     
 
     
