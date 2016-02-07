@@ -34,13 +34,35 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(movie)
+        
+        //set up labels and pictures data
         let posterPath = movie["poster_path"] as! String
         let baseURL = "http://image.tmdb.org/t/p/w500"
         let imageURL = NSURL(string: baseURL + posterPath)
-        
-        
         self.labelName.text = movie["title"] as? String
         self.imageBanner.setImageWithURL(imageURL!)
+        
+        self.labelOverview.text = movie["overview"] as? String
+        self.labelOverview.sizeToFit()
+        
+        self.labelDate.text = movie["release_date"] as? String
+        self.labelOriginalLanguage.text = movie["original_language"] as? String
+        self.labelPopularity.text = String(movie["popularity"] as! Int)
+    
+        let adults = movie["adult"] as! Int
+        switch (adults){
+        case 1:
+            self.labelMovieForAdults.text = "Yes"
+            break;
+        default:
+            self.labelMovieForAdults.text = "No"
+        }
+        
+        self.labelVoteAverage.text = String(movie["vote_average"] as! Int)
+        self.labelVoteCount.text = String(movie["vote_count"] as! Int)
+        
+
+        
         
         
         //scrollViewSettings
