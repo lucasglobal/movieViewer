@@ -35,6 +35,13 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
         super.viewDidLoad()
         print(movie)
         
+        //navigationBar Settings
+        let bar:UINavigationBar! =  self.navigationController?.navigationBar
+        bar.tintColor = UIColor.yellowColor()
+//        bar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        bar.shadowImage = UIImage()
+//        bar.backgroundColor = UIColor(red: 255.0/255.0 , green: 255.0/255.0, blue: 0, alpha: 0.5)
+        
         //set up labels and pictures data
         let posterPath = movie["poster_path"] as! String
         let baseURL = "http://image.tmdb.org/t/p/w500"
@@ -104,9 +111,7 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
         })
 
     }
-    
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

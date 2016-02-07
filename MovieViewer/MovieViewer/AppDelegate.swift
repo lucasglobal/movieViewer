@@ -34,9 +34,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [nowPlayingNavigationController,topRatedNavigationController]
-        
+        tabBarController
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        
+        //tabbar settings
+        tabBarController.tabBar.barTintColor = UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.01)
+        tabBarController.tabBar.tintColor = UIColor.blackColor()
+        tabBarController.tabBar.translucent = false
+        
+        
+        //navigationBar Settings
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.translucent = true
+        
         return true
     }
 

@@ -26,7 +26,14 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        //navigationBar Settings
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.translucent = true
+
         
+        //set up refreshControl
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
 
@@ -284,7 +291,13 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         
 
     }
+    override func viewDidAppear(animated: Bool) {
+        //navigationBar Settings
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.translucent = true
 
+    }
 }
 
 
