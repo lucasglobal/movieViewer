@@ -299,6 +299,27 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         self.navigationController!.navigationBar.translucent = true
 
     }
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if descriptionBeingShown{
+            if let cellToUndetail = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: cellBeingDetailed)) as? MovieCell{
+                cellToUndetail.tag = cellBeingDetailed
+                
+                
+                let handMadegesture = UITapGestureRecognizer(target: cellToUndetail, action: nil)
+                cellToUndetail.addGestureRecognizer(handMadegesture)
+                
+                self.singleTapping(handMadegesture)
+                
+                let singleTap = UITapGestureRecognizer(target: self, action: "singleTapping:")
+                cellToUndetail.posterView.addGestureRecognizer(singleTap)
+                cellToUndetail.addGestureRecognizer(singleTap)
+
+            }
+            
+            
+
+        }
+    }
 }
 
 
