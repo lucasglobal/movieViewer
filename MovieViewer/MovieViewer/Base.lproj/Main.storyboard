@@ -292,6 +292,21 @@
                                         <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VpJ-HX-mbj">
+                                        <rect key="frame" x="123" y="130" width="73" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="actionPlayButton:" destination="aQi-WP-Iwo" eventType="touchUpInside" id="vUF-GK-aq5"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Trailer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e5e-65-cgo">
+                                        <rect key="frame" x="107" y="208" width="106" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -300,6 +315,7 @@
                     <navigationItem key="navigationItem" id="17g-qn-g7R"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="buttonPlay" destination="VpJ-HX-mbj" id="vph-FO-Q5t"/>
                         <outlet property="imageBanner" destination="L3h-xB-ODQ" id="2w0-wi-5ei"/>
                         <outlet property="labelDate" destination="zE0-nq-W3l" id="BPm-Da-hHE"/>
                         <outlet property="labelInformationsStatic" destination="7NG-M9-bIx" id="TuQ-x4-6Ku"/>
@@ -313,6 +329,8 @@
                         <outlet property="labelPopularity" destination="lvm-9H-MRX" id="NVX-4L-fhR"/>
                         <outlet property="labelPopularityStatic" destination="eZL-5x-IEh" id="W4R-cG-Vun"/>
                         <outlet property="labelReleaseDateStatic" destination="4rX-r2-WhQ" id="8JH-x6-m0s"/>
+                        <outlet property="labelScrollToSidesToSeeMore" destination="rOq-r6-W5j" id="7sE-c3-qe9"/>
+                        <outlet property="labelTrailer" destination="e5e-65-cgo" id="j2s-mF-Dfq"/>
                         <outlet property="labelVoteAverage" destination="7xe-Gc-qqM" id="oVg-JP-cdP"/>
                         <outlet property="labelVoteAverageStatic" destination="Djm-Xy-fsZ" id="qxl-fg-CZ8"/>
                         <outlet property="labelVoteCount" destination="sjc-0J-i1T" id="Iy1-AL-NaB"/>
@@ -345,6 +363,7 @@
     </scenes>
     <resources>
         <image name="000000_Cloud_128px" width="128" height="128"/>
+        <image name="play" width="163" height="163"/>
         <image name="theather" width="890" height="593"/>
     </resources>
 </document>

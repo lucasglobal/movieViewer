@@ -1,0 +1,1 @@
+YOUTUBE_PARSER_OTHER_LDFLAGS = -framework "UIKit"

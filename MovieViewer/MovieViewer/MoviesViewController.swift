@@ -192,7 +192,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             self.tableView.reloadData()
-                            print(responseDictionary["results"])
+                            print(self.endPoint)
 
                             refreshControl.endRefreshing()
                             if self.networkBarAppearing{
@@ -235,6 +235,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             self.movies = responseDictionary["results"] as? [NSDictionary]
+                            print(self.endPoint)
                             self.tableView.reloadData()
                             
                             // Hide HUD once the network request comes back (must be done on main UI thread)
