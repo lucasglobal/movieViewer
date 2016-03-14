@@ -20,9 +20,9 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
     @IBOutlet weak var buttonPlay: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelOverview: UILabel!
     @IBOutlet weak var labelOverviewStatic: UILabel!
     @IBOutlet weak var labelOriginalLanguage: UILabel!
+    @IBOutlet weak var labelOverview: UITextView!
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelOriginalLanguageStatic: UILabel!
     @IBOutlet weak var labelPopularityStatic: UILabel!
@@ -51,7 +51,7 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
         self.getMovieTrailer()
         
         
-        
+
         
         
         //navigationBar Settings
@@ -95,32 +95,51 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
         self.scrollView.delegate = self
         self.scrollView.pagingEnabled = true
         
+        
+        
+        
+        
+        
         //when needed to put in other pages of ScrollView
         let scrollViewWidth:CGFloat = self.scrollView.frame.width
-        
-        self.buttonPlay.frame = CGRectMake(scrollViewWidth*1 + self.buttonPlay.frame.origin.x, self.buttonPlay.frame.origin.y, self.buttonPlay.frame.size.width, self.buttonPlay.frame.size.height)
-        self.labelTrailer.frame = CGRectMake(scrollViewWidth*1 + self.labelTrailer.frame.origin.x, self.labelTrailer.frame.origin.y, self.labelTrailer.frame.size.width, self.labelTrailer.frame.size.height)
+
+        self.buttonPlay.transform = CGAffineTransformMakeTranslation(scrollViewWidth*1, 0)
+        self.labelTrailer.transform = CGAffineTransformMakeTranslation(scrollViewWidth*1, 0)
         
         
         //putting labels in correct pages of scrollView
-        self.labelOverview.frame = CGRectMake(scrollViewWidth*2 + self.labelOverview.frame.origin.x, self.labelOverview.frame.origin.y, self.labelOverview.frame.size.width, self.labelOverview.frame.size.height)
-        self.labelOverviewStatic.frame = CGRectMake(scrollViewWidth*2 + self.labelOverviewStatic.frame.origin.x, self.labelOverviewStatic.frame.origin.y, self.labelOverviewStatic.frame.size.width, self.labelOverviewStatic.frame.size.height)
+        self.labelOverview.transform = CGAffineTransformMakeTranslation(scrollViewWidth*2, 0)
+        self.labelOverviewStatic.transform =  CGAffineTransformMakeTranslation(scrollViewWidth*2, 0)
         
-        self.labelInformationsStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelInformationsStatic.frame.origin.x, self.labelInformationsStatic.frame.origin.y, self.labelInformationsStatic.frame.size.width, self.labelInformationsStatic.frame.size.height)
-        self.labelReleaseDateStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelReleaseDateStatic.frame.origin.x, self.labelReleaseDateStatic.frame.origin.y, self.labelReleaseDateStatic.frame.size.width, self.labelReleaseDateStatic.frame.size.height)
-        self.labelDate.frame = CGRectMake(scrollViewWidth*3 + self.labelDate.frame.origin.x, self.labelDate.frame.origin.y, self.labelDate.frame.size.width, self.labelDate.frame.size.height)
-        self.labelOriginalLanguageStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelOriginalLanguageStatic.frame.origin.x, self.labelOriginalLanguageStatic.frame.origin.y, self.labelOriginalLanguageStatic.frame.size.width, self.labelOriginalLanguageStatic.frame.size.height)
-        self.labelOriginalLanguage.frame = CGRectMake(scrollViewWidth*3 + self.labelOriginalLanguage.frame.origin.x, self.labelOriginalLanguage.frame.origin.y, self.labelOriginalLanguage.frame.size.width, self.labelOriginalLanguage.frame.size.height)
-        self.labelPopularityStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelPopularityStatic.frame.origin.x, self.labelPopularityStatic.frame.origin.y, self.labelPopularityStatic.frame.size.width, self.labelPopularityStatic.frame.size.height)
-        self.labelPopularity.frame = CGRectMake(scrollViewWidth*3 + self.labelPopularity.frame.origin.x, self.labelPopularity.frame.origin.y, self.labelPopularity.frame.size.width, self.labelPopularity.frame.size.height)
-        self.labelMovieForAdultsStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelMovieForAdultsStatic.frame.origin.x, self.labelMovieForAdultsStatic.frame.origin.y, self.labelMovieForAdultsStatic.frame.size.width, self.labelMovieForAdultsStatic.frame.size.height)
-        self.labelMovieForAdults.frame = CGRectMake(scrollViewWidth*3 + self.labelMovieForAdults.frame.origin.x, self.labelMovieForAdults.frame.origin.y, self.labelMovieForAdults.frame.size.width, self.labelMovieForAdults.frame.size.height)
-        self.labelVoteAverageStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelVoteAverageStatic.frame.origin.x, self.labelVoteAverageStatic.frame.origin.y, self.labelVoteAverageStatic.frame.size.width, self.labelVoteAverageStatic.frame.size.height)
-        self.labelVoteAverage.frame = CGRectMake(scrollViewWidth*3 + self.labelVoteAverage.frame.origin.x, self.labelVoteAverage.frame.origin.y, self.labelVoteAverage.frame.size.width, self.labelVoteAverage.frame.size.height)
-        self.labelVoteCountStatic.frame = CGRectMake(scrollViewWidth*3 + self.labelVoteCountStatic.frame.origin.x, self.labelVoteCountStatic.frame.origin.y, self.labelVoteCountStatic.frame.size.width, self.labelVoteCountStatic.frame.size.height)
-        self.labelVoteCount.frame = CGRectMake(scrollViewWidth*3 + self.labelVoteCount.frame.origin.x, self.labelVoteCount.frame.origin.y, self.labelVoteCount.frame.size.width, self.labelVoteCount.frame.size.height)
+//        self.labelOverview.sizeToFit()
+//        self.labelOverview.numberOfLines = 30
+//        self.labelOverview.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//        self.labelOverview.text = self.labelOverview.text!
+//        print(self.labelOverview.numberOfLines)
+//        print(self.labelOverview.text!)
+//        print(self.labelOverview.bounds)
+//        self.labelOverview.textRectForBounds(self.labelOverview.bounds, limitedToNumberOfLines: 50)
+
+
         
-        // Do any additional setup after loading the view.
+        self.labelInformationsStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelReleaseDateStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelDate.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelOriginalLanguageStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelOriginalLanguage.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelPopularityStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelPopularity.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelMovieForAdultsStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelMovieForAdults.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelVoteAverageStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelVoteAverage.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelVoteCountStatic.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        self.labelVoteCount.transform = CGAffineTransformMakeTranslation(scrollViewWidth*3, 0)
+        
+
+        
+        
+                // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,8 +148,10 @@ class MoreInfoViewController: UIViewController,UIScrollViewDelegate {
     }
     override func viewDidAppear(animated: Bool) {
         UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.scrollView.contentOffset.x += 320
+            self.scrollView.contentOffset.x += self.scrollView.frame.size.width
+            
         })
+        
 
     }
 

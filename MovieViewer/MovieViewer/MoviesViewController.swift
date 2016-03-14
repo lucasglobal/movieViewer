@@ -41,22 +41,30 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = UIColor.clearColor()
-
+        
+ 
+    
+        
         self.refreshWithoutControl()
         
         
         
     }
     func singleTapping(sender: UITapGestureRecognizer){
+        var cell = sender.view as? MovieCell
+
+        let smallFrame = CGRectMake(0, 6, 120, 140)
+        let normalFrame = cell?.bounds
         
         if(descriptionBeingShown == false){
-            let cell = sender.view as? MovieCell
+            cell = sender.view as? MovieCell
             cellBeingDetailed = cell!.tag
             print("sendo mostrada agora")
             self.descriptionBeingShown = true
             
+            
             UIView.animateWithDuration(1, animations: { () -> Void in
-                cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width - 200, cell!.posterView.frame.size.height - 200)
+                cell?.posterView.frame = smallFrame
                 
                 cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x, cell!.posterView.frame.origin.y + cell!.posterView.frame.size.height + 10, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
                 
@@ -83,7 +91,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
             if(cellBeingDetailed == cell!.tag){
                 self.descriptionBeingShown = false
                 UIView.animateWithDuration(1, animations: { () -> Void in
-                    cell?.posterView.frame = CGRectMake(cell!.posterView.frame.origin.x, cell!.posterView.frame.origin.y, cell!.posterView.frame.size.width + 200, cell!.posterView.frame.size.height + 200)
+                    cell?.posterView.frame = normalFrame!
                     
                     cell?.overViewLabel.frame = CGRectMake(cell!.overViewLabel.frame.origin.x,cell!.overViewLabel.frame.origin.y + 250, cell!.overViewLabel.frame.size.width, cell!.overViewLabel.frame.size.height)
                     cell?.labelMovieJustOne.frame = CGRectMake(cell!.labelMovieJustOne.frame.origin.x,cell!.labelMovieJustOne.frame.origin.y + 220, cell!.labelMovieJustOne.frame.size.width, cell!.labelMovieJustOne.frame.size.height)
@@ -162,6 +170,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         cell.ratingsLabelDynamic.text = String(voteCount)
         
         cell.buttonSeeMore.tag = cell.tag
+        
         return cell
         
     }
@@ -297,6 +306,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.translucent = true
+        
 
     }
     func scrollViewDidScroll(scrollView: UIScrollView) {
