@@ -20,6 +20,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var ratingsLabelDynamic: UILabel!
     @IBOutlet weak var labelMovieJustOne: UILabel!
     @IBOutlet weak var releaseDateLabelStatic: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

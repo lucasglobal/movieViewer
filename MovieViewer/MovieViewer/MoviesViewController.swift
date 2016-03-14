@@ -15,6 +15,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barNetworkIssue: UIView!
+
     var movies: [NSDictionary]?
     var networkBarAppearing: Bool = false
     var descriptionBeingShown: Bool = false
@@ -46,7 +47,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     
         
         self.refreshWithoutControl()
-        
+
         
         
     }
@@ -243,15 +244,23 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
+                            
+               
                             self.movies = responseDictionary["results"] as? [NSDictionary]
+                            
                             print(self.endPoint)
                             self.tableView.reloadData()
                             
                             // Hide HUD once the network request comes back (must be done on main UI thread)
                             MBProgressHUD.hideHUDForView(self.view, animated: true)
+                            
                             if self.networkBarAppearing{
                                 self.animateBarNetworkIssueNormalPosition()
                             }
+                    }
+                    else{
+                        // Hide HUD once the network request comes back (must be done on main UI thread)
+                        MBProgressHUD.hideHUDForView(self.view, animated: true)
                     }
                 }
                 else{
@@ -326,10 +335,10 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
 
             }
             
-            
-
         }
+        
     }
+    
 }
 
 
