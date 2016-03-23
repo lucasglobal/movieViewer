@@ -26,7 +26,7 @@
 		5CEFC8CF9D6C1640EB6D9333 /* Pods-MovieViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieViewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieViewer/Pods-MovieViewer.release.xcconfig"; sourceTree = "<group>"; };
 		9F5A91BE2A0B8FE7993271A8 /* Pods-MovieViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieViewer/Pods-MovieViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		CE5CC83F2442D117C61C7735 /* Pods_MovieViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E452E2E51C55E78300E8047B /* MovieViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E452E2E51C55E78300E8047B /* MovieRatingViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRatingViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E452E2E81C55E78300E8047B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E452E2ED1C55E78300E8047B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E452E2EF1C55E78300E8047B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		E452E2E61C55E78300E8047B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E452E2E51C55E78300E8047B /* MovieViewer.app */,
+				E452E2E51C55E78300E8047B /* MovieRatingViewer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,9 +136,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E452E2E41C55E78300E8047B /* MovieViewer */ = {
+		E452E2E41C55E78300E8047B /* MovieRatingViewer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E452E2F71C55E78300E8047B /* Build configuration list for PBXNativeTarget "MovieViewer" */;
+			buildConfigurationList = E452E2F71C55E78300E8047B /* Build configuration list for PBXNativeTarget "MovieRatingViewer" */;
 			buildPhases = (
 				E1E4C45A5825C7969E29C1B6 /* Check Pods Manifest.lock */,
 				E452E2E11C55E78300E8047B /* Sources */,
@@ -151,9 +151,9 @@
 			);
 			dependencies = (
 			);
-			name = MovieViewer;
+			name = MovieRatingViewer;
 			productName = MovieViewer;
-			productReference = E452E2E51C55E78300E8047B /* MovieViewer.app */;
+			productReference = E452E2E51C55E78300E8047B /* MovieRatingViewer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -171,7 +171,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E452E2E01C55E78300E8047B /* Build configuration list for PBXProject "MovieViewer" */;
+			buildConfigurationList = E452E2E01C55E78300E8047B /* Build configuration list for PBXProject "MovieRatingViewer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -184,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E452E2E41C55E78300E8047B /* MovieViewer */,
+				E452E2E41C55E78300E8047B /* MovieRatingViewer */,
 			);
 		};
 /* End PBXProject section */
@@ -378,7 +378,7 @@
 				INFOPLIST_FILE = MovieViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LucasRibeiro.MovieViewer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MovieRatingViewer;
 			};
 			name = Debug;
 		};
@@ -390,14 +390,14 @@
 				INFOPLIST_FILE = MovieViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LucasRibeiro.MovieViewer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MovieRatingViewer;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E452E2E01C55E78300E8047B /* Build configuration list for PBXProject "MovieViewer" */ = {
+		E452E2E01C55E78300E8047B /* Build configuration list for PBXProject "MovieRatingViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E452E2F51C55E78300E8047B /* Debug */,
@@ -406,7 +406,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E452E2F71C55E78300E8047B /* Build configuration list for PBXNativeTarget "MovieViewer" */ = {
+		E452E2F71C55E78300E8047B /* Build configuration list for PBXNativeTarget "MovieRatingViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E452E2F81C55E78300E8047B /* Debug */,

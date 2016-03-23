@@ -182,7 +182,7 @@ class MoviesViewController: UIViewController ,UITableViewDataSource, UITableView
     }
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let apiKey = "56f6e4de69f7c1ac35301ca61825b70e"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endPoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
             URL: url!,
